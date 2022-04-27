@@ -1,4 +1,5 @@
 let mix = require('laravel-mix');
+const tailwindcss = require('tailwindcss');
 require('laravel-mix-purgecss');
 
 /*
@@ -12,31 +13,34 @@ require('laravel-mix-purgecss');
 
 mix.version();
 mix.options({
-  processCssUrls: false
-})
+        processCssUrls: false
+    })
 
     /*
      * Sourced asset dependencies via node_modules and JS bootstrapping
      */
     .js('resources/js/app.js', 'public/js').vue({ version: 2 })
     .sass('resources/sass/app.scss', 'public/css')
-    .purgeCss()
+    .options({
+        processCssUrls: false,
+        postCss: [tailwindcss('./tailwind.config.js')]
+    }).purgeCss()
 
     /*
-     * Themes
+     * Themes (Replaced by tailwind)
      *
      * Note: Default wysibb theme is compiled into public/css/app.css from resources/sass/app.scss
      *
      */
-    .sass('resources/sass/themes/galactic.scss', 'public/css/themes/galactic.css')
-    .sass('resources/sass/themes/dark-blue.scss', 'public/css/themes/dark-blue.css')
-    .sass('resources/sass/themes/dark-green.scss', 'public/css/themes/dark-green.css')
-    .sass('resources/sass/themes/dark-pink.scss', 'public/css/themes/dark-pink.css')
-    .sass('resources/sass/themes/dark-purple.scss', 'public/css/themes/dark-purple.css')
-    .sass('resources/sass/themes/dark-red.scss', 'public/css/themes/dark-red.css')
-    .sass('resources/sass/themes/dark-teal.scss', 'public/css/themes/dark-teal.css')
-    .sass('resources/sass/themes/dark-yellow.scss', 'public/css/themes/dark-yellow.css')
-    .sass('resources/sass/themes/cosmic-void.scss', 'public/css/themes/cosmic-void.css')
+    // .sass('resources/sass/themes/galactic.scss', 'public/css/themes/galactic.css')
+    // .sass('resources/sass/themes/dark-blue.scss', 'public/css/themes/dark-blue.css')
+    // .sass('resources/sass/themes/dark-green.scss', 'public/css/themes/dark-green.css')
+    // .sass('resources/sass/themes/dark-pink.scss', 'public/css/themes/dark-pink.css')
+    // .sass('resources/sass/themes/dark-purple.scss', 'public/css/themes/dark-purple.css')
+    // .sass('resources/sass/themes/dark-red.scss', 'public/css/themes/dark-red.css')
+    // .sass('resources/sass/themes/dark-teal.scss', 'public/css/themes/dark-teal.css')
+    // .sass('resources/sass/themes/dark-yellow.scss', 'public/css/themes/dark-yellow.css')
+    // .sass('resources/sass/themes/cosmic-void.scss', 'public/css/themes/cosmic-void.css')
 
     /*
      * Login and TwoStep Auth styles
@@ -45,8 +49,13 @@ mix.options({
      *
      * Note: These will likely be reworked into VueJS component(s)
      */
-    .sass('resources/sass/main/login.scss', 'public/css/main/login.css')
-    .sass('resources/sass/main/twostep.scss', 'public/css/main/twostep.css')
+    // .sass('resources/sass/main/login.scss', 'public/css/main/login.css')
+    // .sass('resources/sass/main/twostep.scss', 'public/css/main/twostep.css')
+    .sass('resources/sass/auth.scss', 'public/css/auth.css')
+    .options({
+        processCssUrls: false,
+        postCss: [tailwindcss('./tailwind.config.js')]
+    }).purgeCss()
 
     /*
      * Here we take all these scripts and compile them into a single 'unit3d.js' file that will be loaded after 'app.js'
