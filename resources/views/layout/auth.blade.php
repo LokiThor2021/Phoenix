@@ -67,11 +67,11 @@
 
     </script>
 @endif
-@if(!\getenv('AUTH_BACKDROP',))
+@if(\config('Phoenix.auth-backdrop'))
     <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}" defer>
         window.onload = () => {
             const body = document.body.style;
-            body.background = 'linear-gradient(335deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1)),url({{\getenv('AUTH_BACKDROP')}}) fixed no-repeat center';
+            body.background = 'linear-gradient(335deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1)),url({{\config('Phoenix.auth-backdrop')}}) fixed no-repeat center';
             body.backgroundSize = 'cover';
         };
     </script>
