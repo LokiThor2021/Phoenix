@@ -1,5 +1,5 @@
 <div
-    class="quick-search"
+    class="quick-search relative w-full"
     x-data="{ search: 'movie', ...quickSearchKeyboardNavigation() }"
     x-on:keydown.escape.window="$refs.movieSearch.blur(); $refs.seriesSearch.blur(); $refs.personSearch.blur()"
 >
@@ -17,7 +17,7 @@
                     "
                 />
                 <i
-                    class="quick-search__radio-icon {{ \config('other.font-awesome') }} fa-camera-movie"
+                    class="quick-search__radio-icon fa fa-camera-movie"
                     title="{{ __('mediahub.movies') }}"
                 ></i>
             </label>
@@ -33,7 +33,7 @@
                     "
                 />
                 <i
-                    class="quick-search__radio-icon {{ \config('other.font-awesome') }} fa-tv-retro"
+                    class="quick-search__radio-icon fa fa-tv-retro"
                     title="{{ __('mediahub.shows') }}"
                 ></i>
             </label>
@@ -49,7 +49,7 @@
                     "
                 />
                 <i
-                    class="quick-search__radio-icon {{ \config('other.font-awesome') }} fa-user"
+                    class="quick-search__radio-icon fa fa-user"
                     title="{{ __('mediahub.persons') }}"
                 ></i>
             </label>
@@ -180,7 +180,7 @@
                     document.querySelector(`.quick-search__input:not([style='display: none;'])`)?.focus()
                 } else {
                     el.previousElementSibling?.firstElementChild?.focus()
-                }        
+                }
             }
         }
     }

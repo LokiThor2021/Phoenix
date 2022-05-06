@@ -21,7 +21,10 @@ use App\Models\Page;
 use App\Models\User;
 use App\Observers\UserObserver;
 use App\Repositories\WishRepository;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\View as ViewFacade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
 
@@ -57,14 +60,14 @@ class AppServiceProvider extends ServiceProvider
         //Torrent::observe(TorrentObserver::class);
 
         // Share $footer_pages across all views
-        \view()->composer('*', function (View $view) {
-            $footerPages = \cache()->remember('cached-pages', 3_600, fn () => Page::select(['id', 'name', 'slug', 'created_at'])->take(6)->get());
-
-            $view->with(['footer_pages' => $footerPages]);
+        ViewFacade::composer('*', function (View $view) {
+            $footerPages = Cache::remember('cached-pages', 3_600, fn () => Page::select(['id', 'name', 'slug', 'created_at'])->take(6)->get());
+            $user = Auth::user();
+            $view->with(['footer_pages' => $footerPages,'user' => $user]);
         });
 
         // Boostrap Pagination
-        \Illuminate\Pagination\Paginator::useBootstrap();
+//        \Illuminate\Pagination\Paginator::useBootstrap();
 
         // Hidden Captcha
         Blade::directive('hiddencaptcha', fn ($mustBeEmptyField = '_username') => \sprintf('<?= App\Helpers\HiddenCaptcha::render(%s); ?>', $mustBeEmptyField));
