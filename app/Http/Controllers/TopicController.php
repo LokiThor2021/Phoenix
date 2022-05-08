@@ -62,9 +62,9 @@ class TopicController extends Controller
 
         // Get all posts
         $posts = $topic->posts()->with(['user', 'user.group', 'user.topics', 'user.posts', 'topic', 'tips'])
-            ->withCount(['likes' => function (Builder $query) {
+            ->withCount(['likes' => function (Builder $query): void {
                 $query->where('like', '=', 1);
-            }, 'likes as dislikes_count' => function (Builder $query) {
+            }, 'likes as dislikes_count' => function (Builder $query): void {
                 $query->where('dislike', '=', 1);
             }])->paginate(25);
 

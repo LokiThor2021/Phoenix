@@ -56,7 +56,7 @@ class BonusController extends Controller
     {
         $user = $request->user();
         $userbon = $user->getSeedbonus();
-        $gifttransactions = BonTransactions::with(['senderObj', 'receiverObj'])->where(function ($query) use ($user) {
+        $gifttransactions = BonTransactions::with(['senderObj', 'receiverObj'])->where(function ($query) use ($user): void {
             $query->where('sender', '=', $user->id)->orwhere('receiver', '=', $user->id);
         })->where('name', '=', 'gift')->latest('date_actioned')->paginate(25);
 
@@ -83,7 +83,7 @@ class BonusController extends Controller
     {
         $user = $request->user();
         $userbon = $user->getSeedbonus();
-        $bontransactions = BonTransactions::with(['senderObj', 'receiverObj'])->where(function ($query) use ($user) {
+        $bontransactions = BonTransactions::with(['senderObj', 'receiverObj'])->where(function ($query) use ($user): void {
             $query->where('sender', '=', $user->id)->orwhere('receiver', '=', $user->id);
         })->where('name', '=', 'tip')->latest('date_actioned')->paginate(25);
 

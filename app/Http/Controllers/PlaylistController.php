@@ -42,9 +42,9 @@ class PlaylistController extends Controller
      */
     public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        $playlists = Playlist::with('user')->withCount('torrents')->where(function ($query) {
+        $playlists = Playlist::with('user')->withCount('torrents')->where(function ($query): void {
             $query->where('is_private', '=', 0)
-                ->orWhere(function ($query) {
+                ->orWhere(function ($query): void {
                     $query->where('is_private', '=', 1)->where('user_id', '=', \auth()->id());
                 });
         })->oldest('name')->paginate(24);
@@ -140,7 +140,7 @@ class PlaylistController extends Controller
 
         $torrents = PlaylistTorrent::with(['torrent:id,name,category_id,resolution_id,type_id,tmdb,seeders,leechers,times_completed,size,anon'])
             ->where('playlist_id', '=', $playlist->id)
-            ->orderBy(function ($query) {
+            ->orderBy(function ($query): void {
                 $query->select('name')
                     ->from('torrents')
                     ->whereColumn('id', 'playlist_torrents.torrent_id')

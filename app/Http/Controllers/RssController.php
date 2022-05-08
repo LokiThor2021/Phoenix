@@ -140,8 +140,9 @@ class RssController extends Controller
      * Display the specified RSS resource.
      *
      * @throws \Exception
+     * @return array<string, mixed[]>
      */
-    public function show(int $id, string $rsskey): array|\Illuminate\Http\Response
+    public function show(int $id, string $rsskey): array
     {
         $user = User::where('rsskey', '=', $rsskey)->firstOrFail();
 
@@ -206,13 +207,13 @@ class RssController extends Controller
         $builder = Torrent::with(['user', 'category', 'type', 'resolution']);
 
         if ($rss->object_torrent->search) {
-            $builder->where(function ($query) use ($search) {
+            $builder->where(function ($query) use ($search): void {
                 $query->where('name', 'like', $search);
             });
         }
 
         if ($rss->object_torrent->description) {
-            $builder->where(function ($query) use ($description) {
+            $builder->where(function ($query) use ($description): void {
                 $query->where('description', 'like', $description)->orWhere('mediainfo', 'like', $description);
             });
         }

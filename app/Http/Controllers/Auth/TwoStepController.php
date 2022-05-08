@@ -25,13 +25,22 @@ class TwoStepController extends Controller
 {
     use TwoStep;
 
+    /**
+     * @var mixed|int|float|null
+     */
     private $authCount;
 
+    /**
+     * @var mixed|null
+     */
     private $authStatus;
 
+    /**
+     * @var mixed|null
+     */
     private $twoStepAuth;
 
-    private $remainingAttempts;
+    private int|float|null $remainingAttempts = null;
 
     private ?\Illuminate\Contracts\Auth\Authenticatable $user = null;
 
@@ -66,6 +75,7 @@ class TwoStepController extends Controller
 
     /**
      * Validation and Invalid code failed actions and return message.
+     * @return array{message: \Illuminate\Contracts\Translation\Translator|string|mixed[]|null, authCount: int|float, remainingAttempts: int|float|null, errors?: mixed}
      */
     private function invalidCodeReturnData($errors = null): array
     {

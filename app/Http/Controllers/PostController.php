@@ -84,7 +84,7 @@ class PostController extends Controller
             if ($this->taggedUserRepository->contains($request->input('content'), '@here') && $user->group->is_modo) {
                 $users = \collect([]);
 
-                $topic->posts()->get()->each(function ($p) use ($users) {
+                $topic->posts()->get()->each(function ($p) use ($users): void {
                     $users->push($p->user);
                 });
 

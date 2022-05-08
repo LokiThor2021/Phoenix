@@ -76,7 +76,7 @@ class ForumController extends Controller
         }
 
         if ($request->has('subscribed') && $request->input('subscribed') == 1) {
-            $result->where(function ($query) use ($topicNeos, $forumNeos) {
+            $result->where(function ($query) use ($topicNeos, $forumNeos): void {
                 $query->whereIntegerInRaw('topics.id', $topicNeos)->orWhereIntegerInRaw('topics.forum_id', $forumNeos);
             });
         } elseif ($request->has('notsubscribed') && $request->input('notsubscribed') == 1) {
@@ -124,7 +124,7 @@ class ForumController extends Controller
             if ($category > 0 && $category < 99_999_999_999) {
                 $children = Forum::where('parent_id', '=', $category)->get()->toArray();
                 if (\is_array($children)) {
-                    $result->where(function ($query) use ($category, $children) {
+                    $result->where(function ($query) use ($category, $children): void {
                         $query->where('topics.forum_id', '=', $category)->orWhereIn('topics.forum_id', $children);
                     });
                 }
@@ -139,14 +139,12 @@ class ForumController extends Controller
                 $sorting = 'posts.id';
                 $direction = 'desc';
             }
+        } elseif ($request->has('sorting') && $request->input('sorting') != null) {
+            $sorting = \sprintf('topics.%s', $request->input('sorting'));
+            $direction = $request->input('direction');
         } else {
-            if ($request->has('sorting') && $request->input('sorting') != null) {
-                $sorting = \sprintf('topics.%s', $request->input('sorting'));
-                $direction = $request->input('direction');
-            } else {
-                $sorting = 'topics.last_reply_at';
-                $direction = 'desc';
-            }
+            $sorting = 'topics.last_reply_at';
+            $direction = 'desc';
         }
         $results = $result->orderBy($sorting, $direction)->paginate(25)->withQueryString();
 
@@ -194,7 +192,7 @@ class ForumController extends Controller
             $forumNeos = [];
         }
 
-        $builder = Forum::with('subscription_topics')->selectRaw('forums.id,max(forums.position) as position,max(forums.num_topic) as num_topic,max(forums.num_post) as num_post,max(forums.last_topic_id) as last_topic_id,max(forums.last_topic_name) as last_topic_name,max(forums.last_topic_slug) as last_topic_slug,max(forums.last_post_user_id) as last_post_user_id,max(forums.last_post_user_username) as last_post_user_username,max(forums.name) as name,max(forums.slug) as slug,max(forums.description) as description,max(forums.parent_id) as parent_id,max(forums.created_at),max(forums.updated_at),max(topics.id) as topic_id,max(topics.created_at) as topic_created_at')->leftJoin('topics', 'forums.id', '=', 'topics.forum_id')->whereIntegerNotInRaw('topics.forum_id', $pests)->where(function ($query) use ($topicNeos, $forumNeos) {
+        $builder = Forum::with('subscription_topics')->selectRaw('forums.id,max(forums.position) as position,max(forums.num_topic) as num_topic,max(forums.num_post) as num_post,max(forums.last_topic_id) as last_topic_id,max(forums.last_topic_name) as last_topic_name,max(forums.last_topic_slug) as last_topic_slug,max(forums.last_post_user_id) as last_post_user_id,max(forums.last_post_user_username) as last_post_user_username,max(forums.name) as name,max(forums.slug) as slug,max(forums.description) as description,max(forums.parent_id) as parent_id,max(forums.created_at),max(forums.updated_at),max(topics.id) as topic_id,max(topics.created_at) as topic_created_at')->leftJoin('topics', 'forums.id', '=', 'topics.forum_id')->whereIntegerNotInRaw('topics.forum_id', $pests)->where(function ($query) use ($topicNeos, $forumNeos): void {
             $query->whereIntegerInRaw('topics.id', $topicNeos)->orWhereIntegerInRaw('forums.id', $forumNeos);
         })->groupBy('forums.id');
 

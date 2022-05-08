@@ -29,7 +29,10 @@ use Illuminate\Support\Facades\DB;
  */
 class StatsController extends Controller
 {
-    public \Carbon\Carbon $carbon;
+    /**
+     * @var \DateTime|\DateTimeImmutable
+     */
+    public \DateTimeInterface $carbon;
 
     /**
      * StatsController Constructor.
@@ -47,7 +50,7 @@ class StatsController extends Controller
     public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
         // Total Members Count (All Groups)
-        $allUser = \cache()->remember('all_user', $this->carbon, fn () => User::withTrashed()->count());
+        $allUser = \cache()->remember('all_user', $this->carbon, fn (): int => User::withTrashed()->count());
 
         // Total Active Members Count (Not Validating, Banned, Disabled, Pruned)
         $activeUser = \cache()->remember('active_user', $this->carbon, function () {
@@ -67,7 +70,7 @@ class StatsController extends Controller
         });
 
         // Total Pruned Members Count
-        $prunedUser = \cache()->remember('pruned_user', $this->carbon, function () {
+        $prunedUser = \cache()->remember('pruned_user', $this->carbon, function (): int {
             $prunedGroup = \cache()->rememberForever('pruned_group', fn () => Group::where('slug', '=', 'pruned')->pluck('id'));
 
             return User::onlyTrashed()->where('group_id', '=', $prunedGroup[0])->count();

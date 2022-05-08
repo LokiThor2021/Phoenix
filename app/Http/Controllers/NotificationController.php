@@ -36,7 +36,7 @@ class NotificationController extends Controller
      *
      * @throws \Throwable
      */
-    public function faceted(Request $request)
+    public function faceted(Request $request): string
     {
         $user = $request->user();
 

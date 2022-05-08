@@ -199,6 +199,7 @@ class AnnounceController extends Controller
 
     /**
      * @throws \App\Exceptions\TrackerException
+     * @return array<string|class-string<\event>, mixed>
      */
     private function checkAnnounceFields(Request $request): array
     {
@@ -356,7 +357,7 @@ class AnnounceController extends Controller
     /**
      * @throws \App\Exceptions\TrackerException
      */
-    private function checkPeer($torrent, $queries, $user): void
+    private function checkPeer(object $torrent, array $queries, object $user): void
     {
         if (\strtolower($queries['event']) === 'completed' &&
             ! Peer::where('torrent_id', '=', $torrent->id)
@@ -370,7 +371,7 @@ class AnnounceController extends Controller
     /**
      * @throws \App\Exceptions\TrackerException
      */
-    private function checkMinInterval($torrent, $queries, $user): void
+    private function checkMinInterval(object $torrent, array $queries, object $user): void
     {
         $prevAnnounce = Peer::where('torrent_id', '=', $torrent->id)
             ->where('peer_id', '=', $queries['peer_id'])
@@ -386,7 +387,7 @@ class AnnounceController extends Controller
     /**
      * @throws \App\Exceptions\TrackerException
      */
-    private function checkMaxConnections($torrent, $user): void
+    private function checkMaxConnections(object $torrent, object $user): void
     {
         // Pull Count On Users Peers Per Torrent For Rate Limiting
         $connections = Peer::where('torrent_id', '=', $torrent->id)
@@ -402,7 +403,7 @@ class AnnounceController extends Controller
     /**
      * @throws \App\Exceptions\TrackerException
      */
-    private function checkDownloadSlots($queries, $user): void
+    private function checkDownloadSlots(array $queries, object $user): void
     {
         $max = $user->group->download_slots;
 
@@ -418,8 +419,9 @@ class AnnounceController extends Controller
 
     /**
      * @throws \Exception
+     * @return array<string, int>|array<string, string>|array<string, mixed[]>
      */
-    private function generateSuccessAnnounceResponse($queries, $torrent, $user): array
+    private function generateSuccessAnnounceResponse(array $queries, object $torrent, object $user): array
     {
         // Build Response For Bittorrent Client
         $repDict = [
@@ -465,7 +467,7 @@ class AnnounceController extends Controller
     /**
      * TODO: Paused Event (http://www.bittorrent.org/beps/bep_0021.html).
      */
-    private function sendAnnounceJob($queries, $user, $torrent): void
+    private function sendAnnounceJob(array $queries, object $user, object $torrent): void
     {
         if (\strtolower($queries['event']) === 'started') {
             ProcessStartedAnnounceRequest::dispatch($queries, $user, $torrent);
@@ -478,6 +480,9 @@ class AnnounceController extends Controller
         }
     }
 
+    /**
+     * @return array<string, string>|array<string, int>
+     */
     protected function generateFailedAnnounceResponse(TrackerException $trackerException): array
     {
         return [

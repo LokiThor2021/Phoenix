@@ -113,7 +113,7 @@ class CommentController extends Controller
             if ($this->taggedUserRepository->contains($request->input('content'), '@here') && $user->group->is_modo) {
                 $users = \collect([]);
 
-                $collection->comments()->get()->each(function ($c, $v) use ($users) {
+                $collection->comments()->get()->each(function ($c, $v) use ($users): void {
                     $users->push($c->user);
                 });
                 $this->tag->messageCommentUsers(
@@ -211,7 +211,7 @@ class CommentController extends Controller
             if ($this->taggedUserRepository->contains($request->input('content'), '@here') && $user->group->is_modo) {
                 $users = \collect([]);
 
-                $article->comments()->get()->each(function ($c) use ($users) {
+                $article->comments()->get()->each(function ($c) use ($users): void {
                     $users->push($c->user);
                 });
                 $this->taggedUserRepository->messageCommentUsers(
@@ -309,7 +309,7 @@ class CommentController extends Controller
             if ($this->taggedUserRepository->contains($request->input('content'), '@here') && $user->group->is_modo) {
                 $users = \collect([]);
 
-                $playlist->comments()->get()->each(function ($c) use ($users) {
+                $playlist->comments()->get()->each(function ($c) use ($users): void {
                     $users->push($c->user);
                 });
                 $this->taggedUserRepository->messageCommentUsers(
@@ -412,7 +412,7 @@ class CommentController extends Controller
             if ($this->taggedUserRepository->contains($request->input('content'), '@here') && $user->group->is_modo) {
                 $users = \collect([]);
 
-                $torrent->comments()->get()->each(function ($c) use ($users) {
+                $torrent->comments()->get()->each(function ($c) use ($users): void {
                     $users->push($c->user);
                 });
                 $this->taggedUserRepository->messageCommentUsers(
@@ -515,7 +515,7 @@ class CommentController extends Controller
             if ($this->taggedUserRepository->contains($request->input('content'), '@here') && $user->group->is_modo) {
                 $users = \collect([]);
 
-                $tr->comments()->get()->each(function ($c) use ($users) {
+                $tr->comments()->get()->each(function ($c) use ($users): void {
                     $users->push($c->user);
                 });
                 $this->taggedUserRepository->messageCommentUsers(
