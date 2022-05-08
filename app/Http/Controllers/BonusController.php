@@ -13,6 +13,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\ByteUnitsInterface;
 use App\Models\BonExchange;
 use App\Models\BonTransactions;
 use App\Models\PersonalFreeleech;
@@ -25,6 +26,7 @@ use App\Notifications\NewPostTip;
 use App\Notifications\NewUploadTip;
 use App\Repositories\ChatRepository;
 use Carbon\Carbon;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -34,16 +36,23 @@ use Illuminate\Support\Facades\DB;
 class BonusController extends Controller
 {
     /**
-     * BonusController Constructor.
+     * BonusController Constructor
+     *
+     * @param \App\Interfaces\ByteUnitsInterface $byteUnits
+     * @param \App\Repositories\ChatRepository   $chatRepository
      */
-    public function __construct(protected \App\Interfaces\ByteUnitsInterface $byteUnits, private readonly ChatRepository $chatRepository)
+    public function __construct(protected ByteUnitsInterface $byteUnits, private readonly ChatRepository $chatRepository)
     {
     }
-
+    
     /**
      * Show Bonus Gifts System.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function gifts(Request $request): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    public function gifts(Request $request): Factory|\Illuminate\View\View
     {
         $user = $request->user();
         $userbon = $user->getSeedbonus();
@@ -62,11 +71,15 @@ class BonusController extends Controller
             'gifts_received'    => $giftsReceived,
         ]);
     }
-
+    
     /**
      * Show Bonus Tips System.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function tips(Request $request): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    public function tips(Request $request): Factory|\Illuminate\View\View
     {
         $user = $request->user();
         $userbon = $user->getSeedbonus();
@@ -85,11 +98,15 @@ class BonusController extends Controller
             'tips_received'     => $tipsReceived,
         ]);
     }
-
+    
     /**
      * Show Bonus Store System.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function store(Request $request): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    public function store(Request $request): Factory|\Illuminate\View\View
     {
         $user = $request->user();
         $userbon = $user->getSeedbonus();
@@ -111,11 +128,15 @@ class BonusController extends Controller
             'invite'            => $invite,
         ]);
     }
-
+    
     /**
      * Show Bonus Gift System.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function gift(Request $request): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    public function gift(Request $request): Factory|\Illuminate\View\View
     {
         $userbon = $request->user()->getSeedbonus();
 
@@ -123,11 +144,16 @@ class BonusController extends Controller
             'userbon'           => $userbon,
         ]);
     }
-
+    
     /**
      * Show Bonus Earnings System.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param string                   $username
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function bonus(Request $request, string $username = ''): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    public function bonus(Request $request, string $username = ''): Factory|\Illuminate\View\View
     {
         $userbon = $request->user()->getSeedbonus();
 
@@ -190,9 +216,14 @@ class BonusController extends Controller
             'second'            => $second,
         ]);
     }
-
+    
     /**
      * Exchange Points For A Item.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function exchange(Request $request, int $id): \Illuminate\Http\RedirectResponse
     {
@@ -219,9 +250,14 @@ class BonusController extends Controller
         return \to_route('bonus_store')
             ->withSuccess(\trans('bon.success'));
     }
-
+    
     /**
      * Do Item Exchange.
+     *
+     * @param int $userID
+     * @param int $itemID
+     *
+     * @return bool
      */
     public function doItemExchange(int $userID, int $itemID): bool
     {
@@ -278,9 +314,13 @@ class BonusController extends Controller
 
         return true;
     }
-
+    
     /**
      * Gift Points To A User.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function sendGift(Request $request): \Illuminate\Http\RedirectResponse
     {
@@ -365,9 +405,14 @@ class BonusController extends Controller
         return \to_route('bonus_store')
             ->withErrors(\trans('bon.failed-user-not-found'));
     }
-
+    
     /**
      * Tip Points To A Uploader.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function tipUploader(Request $request, int $id): \Illuminate\Http\RedirectResponse
     {
@@ -414,9 +459,13 @@ class BonusController extends Controller
         return \to_route('torrent', ['id' => $torrent->id])
             ->withSuccess(\trans('bon.success-tip'));
     }
-
+    
     /**
      * Tip Points To A Poster.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function tipPoster(Request $request): \Illuminate\Http\RedirectResponse
     {
@@ -466,9 +515,12 @@ class BonusController extends Controller
         return \to_route('forum_topic', ['id' => $post->topic->id])
             ->withSuccess(\trans('bon.success-tip'));
     }
-
+    
     /**
      * @method getDyingCount
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return int
      */
     public function getDyingCount(Request $request): int
     {
@@ -483,9 +535,12 @@ class BonusController extends Controller
             ->where('peers.user_id', $user->id)
             ->count();
     }
-
+    
     /**
      * @method getLegendaryCount
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return int
      */
     public function getLegendaryCount(Request $request): int
     {
@@ -500,9 +555,12 @@ class BonusController extends Controller
             ->where('peers.user_id', $user->id)
             ->count();
     }
-
+    
     /**
      * @method getOldCount
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return int
      */
     public function getOldCount(Request $request): int
     {
@@ -518,9 +576,12 @@ class BonusController extends Controller
             ->where('peers.user_id', $user->id)
             ->count();
     }
-
+    
     /**
      * @method getHugeCount
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return int
      */
     public function getHugeCount(Request $request): int
     {
@@ -534,9 +595,12 @@ class BonusController extends Controller
             ->where('peers.user_id', $user->id)
             ->count();
     }
-
+    
     /**
      * @method getLargeCount
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return int
      */
     public function getLargeCount(Request $request): int
     {
@@ -551,9 +615,12 @@ class BonusController extends Controller
             ->where('peers.user_id', $user->id)
             ->count();
     }
-
+    
     /**
      * @method getRegularCount
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return int
      */
     public function getRegularCount(Request $request): int
     {
@@ -568,9 +635,12 @@ class BonusController extends Controller
             ->where('peers.user_id', $user->id)
             ->count();
     }
-
+    
     /**
      * @method getParticipaintSeedCount
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return int
      */
     public function getParticipaintSeedCount(Request $request): int
     {
@@ -585,9 +655,12 @@ class BonusController extends Controller
             ->where('history.user_id', $user->id)
             ->count();
     }
-
+    
     /**
      * @method getParticipaintSeedCount
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return int
      */
     public function getTeamPlayerSeedCount(Request $request): int
     {
@@ -602,9 +675,12 @@ class BonusController extends Controller
             ->where('history.user_id', $user->id)
             ->count();
     }
-
+    
     /**
      * @method getParticipaintSeedCount
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return int
      */
     public function getCommitedSeedCount(Request $request): int
     {
@@ -619,9 +695,12 @@ class BonusController extends Controller
             ->where('history.user_id', $user->id)
             ->count();
     }
-
+    
     /**
      * @method getParticipaintSeedCount
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return int
      */
     public function getMVPSeedCount(Request $request): int
     {
@@ -636,9 +715,12 @@ class BonusController extends Controller
             ->where('history.user_id', $user->id)
             ->count();
     }
-
+    
     /**
      * @method getParticipaintSeedCount
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return int
      */
     public function getLegendarySeedCount(Request $request): int
     {

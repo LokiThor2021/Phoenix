@@ -21,6 +21,74 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use voku\helper\AntiXSS;
 
+/**
+ * App\Models\TorrentRequest
+ *
+ * @property int $id
+ * @property string $name
+ * @property int $category_id
+ * @property string|null $imdb
+ * @property string|null $tvdb
+ * @property string|null $tmdb
+ * @property string|null $mal
+ * @property string $igdb
+ * @property string $description
+ * @property int $user_id
+ * @property float $bounty
+ * @property int $votes
+ * @property int|null $claimed
+ * @property int $anon
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int|null $filled_by
+ * @property string|null $filled_hash
+ * @property \Illuminate\Support\Carbon|null $filled_when
+ * @property int $filled_anon
+ * @property int|null $approved_by
+ * @property \Illuminate\Support\Carbon|null $approved_when
+ * @property int $type_id
+ * @property int|null $resolution_id
+ * @property-read \App\Models\User|null $FillUser
+ * @property-read \App\Models\User|null $approveUser
+ * @property-read \App\Models\Category $category
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TorrentRequestBounty[] $requestBounty
+ * @property-read int|null $request_bounty_count
+ * @property-read \App\Models\Resolution|null $resolution
+ * @property-read \App\Models\Torrent|null $torrent
+ * @property-read \App\Models\Type|null $type
+ * @property-read \App\Models\User $user
+ * @method static \Database\Factories\TorrentRequestFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest query()
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereAnon($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereApprovedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereApprovedWhen($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereBounty($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereClaimed($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereFilledAnon($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereFilledBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereFilledHash($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereFilledWhen($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereIgdb($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereImdb($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereMal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereResolutionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereTmdb($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereTvdb($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereTypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequest whereVotes($value)
+ * @mixin \Eloquent
+ */
 class TorrentRequest extends Model
 {
     use HasFactory;

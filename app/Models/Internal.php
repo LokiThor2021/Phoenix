@@ -17,6 +17,24 @@ use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Internal
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $icon
+ * @property string $effect
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
+ * @property-read int|null $users_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Internal newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Internal newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Internal query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Internal whereEffect($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Internal whereIcon($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Internal whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Internal whereName($value)
+ * @mixin \Eloquent
+ */
 class Internal extends Model
 {
     use HasFactory;

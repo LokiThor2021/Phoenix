@@ -16,6 +16,38 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\BonTransactions
+ *
+ * @property int $id
+ * @property int $itemID
+ * @property string $name
+ * @property float $cost
+ * @property int $sender
+ * @property int $receiver
+ * @property int|null $torrent_id
+ * @property int|null $post_id
+ * @property string $comment
+ * @property string $date_actioned
+ * @property-read \App\Models\BonExchange|null $exchange
+ * @property-read \App\Models\User|null $receiverObj
+ * @property-read \App\Models\User|null $senderObj
+ * @method static \Database\Factories\BonTransactionsFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|BonTransactions newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BonTransactions newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BonTransactions query()
+ * @method static \Illuminate\Database\Eloquent\Builder|BonTransactions whereComment($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BonTransactions whereCost($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BonTransactions whereDateActioned($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BonTransactions whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BonTransactions whereItemID($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BonTransactions whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BonTransactions wherePostId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BonTransactions whereReceiver($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BonTransactions whereSender($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BonTransactions whereTorrentId($value)
+ * @mixin \Eloquent
+ */
 class BonTransactions extends Model
 {
     use HasFactory;

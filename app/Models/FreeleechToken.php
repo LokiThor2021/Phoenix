@@ -17,6 +17,27 @@ use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\FreeleechToken
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int $torrent_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Torrent|null $torrent
+ * @property-read \App\Models\User $user
+ * @method static \Database\Factories\FreeleechTokenFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|FreeleechToken newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FreeleechToken newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FreeleechToken query()
+ * @method static \Illuminate\Database\Eloquent\Builder|FreeleechToken whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FreeleechToken whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FreeleechToken whereTorrentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FreeleechToken whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FreeleechToken whereUserId($value)
+ * @mixin \Eloquent
+ */
 class FreeleechToken extends Model
 {
     use HasFactory;

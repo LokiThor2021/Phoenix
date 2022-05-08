@@ -44,6 +44,7 @@
         "vstelmakh/url-highlight": "^3.0"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^2.12",
         "brianium/paratest": "^6.3",
         "fakerphp/faker": "^1.16",
         "laravel/sail": "^1.0.1",
@@ -53,7 +54,8 @@
         "phpstan/phpstan": "^1.6",
         "phpunit/phpunit": "^9.5.10",
         "spatie/laravel-ignition": "^1.0",
-        "styleci/cli": "^1.2"
+        "styleci/cli": "^1.2",
+        "timeweb/phpstan-enum": "^3.0"
     },
     "config": {
         "preferred-install": "dist",

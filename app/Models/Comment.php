@@ -21,6 +21,45 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use voku\helper\AntiXSS;
 
+/**
+ * App\Models\Comment
+ *
+ * @property int $id
+ * @property string $content
+ * @property int $anon
+ * @property int|null $torrent_id
+ * @property int|null $article_id
+ * @property int|null $requests_id
+ * @property int|null $collection_id
+ * @property int|null $playlist_id
+ * @property int|null $ticket_id
+ * @property int|null $user_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Article|null $article
+ * @property-read \App\Models\Playlist|null $playlist
+ * @property-read \App\Models\TorrentRequest|null $request
+ * @property-read \App\Models\Ticket|null $ticket
+ * @property-read \App\Models\Torrent|null $torrent
+ * @property-read \App\Models\User|null $user
+ * @method static \Database\Factories\CommentFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereAnon($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereArticleId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereCollectionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment wherePlaylistId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereRequestsId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereTicketId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereTorrentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUserId($value)
+ * @mixin \Eloquent
+ */
 class Comment extends Model
 {
     use HasFactory;

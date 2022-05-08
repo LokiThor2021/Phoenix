@@ -16,6 +16,31 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\BonExchange
+ *
+ * @property int $id
+ * @property string|null $description
+ * @property int $value
+ * @property int $cost
+ * @property bool $upload
+ * @property bool $download
+ * @property bool $personal_freeleech
+ * @property bool $invite
+ * @method static \Database\Factories\BonExchangeFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|BonExchange newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BonExchange newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BonExchange query()
+ * @method static \Illuminate\Database\Eloquent\Builder|BonExchange whereCost($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BonExchange whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BonExchange whereDownload($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BonExchange whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BonExchange whereInvite($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BonExchange wherePersonalFreeleech($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BonExchange whereUpload($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BonExchange whereValue($value)
+ * @mixin \Eloquent
+ */
 class BonExchange extends Model
 {
     use HasFactory;

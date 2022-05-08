@@ -38,6 +38,8 @@ use App\Repositories\ChatRepository;
 use App\Repositories\TaggedUserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
+use function count;
+use function is_countable;
 
 /**
  * @see \Tests\Feature\Http\Controllers\CommentControllerTest
@@ -602,9 +604,11 @@ class CommentController extends Controller
         return \to_route('tickets.show', ['id' => $ticket->id])
             ->withSuccess(\trans('comment.added'));
     }
-
+    
     /**
      * Store A New Comment To A Torrent Via Quick Thanks.
+     *
+     * @throws \Exception
      */
     public function quickthanks(Request $request, int $id): \Illuminate\Http\RedirectResponse
     {
@@ -642,7 +646,7 @@ class CommentController extends Controller
             ];
         }
 
-        $selected = random_int(0, (\is_countable($thankArray) ? \count($thankArray) : 0) - 1);
+        $selected = random_int(0, (is_countable($thankArray) ? count($thankArray) : 0) - 1);
         $comment->content = $thankArray[$selected];
         $comment->user_id = $user->id;
         $comment->torrent_id = $torrent->id;

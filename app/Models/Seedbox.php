@@ -18,6 +18,28 @@ use App\Traits\Encryptable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Seedbox
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string $name
+ * @property string $ip
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $user
+ * @method static \Database\Factories\SeedboxFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Seedbox newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Seedbox newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Seedbox query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Seedbox whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Seedbox whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Seedbox whereIp($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Seedbox whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Seedbox whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Seedbox whereUserId($value)
+ * @mixin \Eloquent
+ */
 class Seedbox extends Model
 {
     use HasFactory;

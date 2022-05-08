@@ -17,6 +17,33 @@ use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Ban
+ *
+ * @property int $id
+ * @property int $owned_by
+ * @property int|null $created_by
+ * @property string|null $ban_reason
+ * @property string|null $unban_reason
+ * @property string|null $removed_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $banneduser
+ * @property-read \App\Models\User|null $staffuser
+ * @method static \Database\Factories\BanFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ban newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Ban newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Ban query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Ban whereBanReason($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ban whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ban whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ban whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ban whereOwnedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ban whereRemovedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ban whereUnbanReason($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ban whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Ban extends Model
 {
     use HasFactory;

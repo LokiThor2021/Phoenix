@@ -17,6 +17,27 @@ use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Thank
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int $torrent_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Torrent $torrent
+ * @property-read \App\Models\User $user
+ * @method static \Database\Factories\ThankFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Thank newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Thank newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Thank query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Thank whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Thank whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Thank whereTorrentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Thank whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Thank whereUserId($value)
+ * @mixin \Eloquent
+ */
 class Thank extends Model
 {
     use HasFactory;

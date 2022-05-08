@@ -67,11 +67,11 @@ class AutoWarning extends Command
                     if ($exsist === null) {
                         $warning = new Warning();
                         $warning->user_id = $hr->user->id;
-                        $warning->warned_by = '1';
+                        $warning->warned_by = 1;
                         $warning->torrent = $hr->torrent->id;
                         $warning->reason = \sprintf('Hit and Run Warning For Torrent %s', $hr->torrent->name);
                         $warning->expires_on = $carbon->copy()->addDays(\config('hitrun.expire'));
-                        $warning->active = '1';
+                        $warning->active = 1;
                         $warning->save();
 
                         // Add +1 To Users Warnings Count In Users Table

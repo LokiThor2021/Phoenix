@@ -16,6 +16,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\FailedLoginAttempt
+ *
+ * @property int $id
+ * @property int|null $user_id
+ * @property string $username
+ * @property string $ip_address
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Database\Factories\FailedLoginAttemptFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|FailedLoginAttempt newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FailedLoginAttempt newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FailedLoginAttempt query()
+ * @method static \Illuminate\Database\Eloquent\Builder|FailedLoginAttempt whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FailedLoginAttempt whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FailedLoginAttempt whereIpAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FailedLoginAttempt whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FailedLoginAttempt whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FailedLoginAttempt whereUsername($value)
+ * @mixin \Eloquent
+ */
 class FailedLoginAttempt extends Model
 {
     use HasFactory;

@@ -17,6 +17,26 @@ use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Region
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property int $position
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TorrentRequest[] $requests
+ * @property-read int|null $requests_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Torrent[] $torrents
+ * @property-read int|null $torrents_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Region newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Region newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Region query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Region whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Region whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Region wherePosition($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Region whereSlug($value)
+ * @mixin \Eloquent
+ */
 class Region extends Model
 {
     use HasFactory;

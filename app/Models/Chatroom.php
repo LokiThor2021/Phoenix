@@ -18,6 +18,29 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * App\Models\Chatroom
+ *
+ * @property int $id
+ * @property string $name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Message[] $messages
+ * @property-read int|null $messages_count
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
+ * @property-read int|null $users_count
+ * @method static \Database\Factories\ChatroomFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chatroom newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Chatroom newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Chatroom query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Chatroom whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chatroom whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chatroom whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chatroom whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Chatroom extends Model
 {
     use HasFactory;

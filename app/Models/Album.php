@@ -17,6 +17,34 @@ use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Album
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string $name
+ * @property string $description
+ * @property string $imdb
+ * @property string $cover_image
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Image[] $images
+ * @property-read int|null $images_count
+ * @property-read \App\Models\User|null $user
+ * @method static \Database\Factories\AlbumFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Album newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Album newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Album query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Album whereCoverImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Album whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Album whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Album whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Album whereImdb($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Album whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Album whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Album whereUserId($value)
+ * @mixin \Eloquent
+ */
 class Album extends Model
 {
     use HasFactory;

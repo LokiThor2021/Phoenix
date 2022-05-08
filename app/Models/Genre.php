@@ -15,6 +15,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Genre
+ *
+ * @property int $id
+ * @property string $name
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Movie[] $movie
+ * @property-read int|null $movie_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Tv[] $tv
+ * @property-read int|null $tv_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Genre newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Genre newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Genre query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Genre whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Genre whereName($value)
+ * @mixin \Eloquent
+ */
 class Genre extends Model
 {
     protected $guarded = [];

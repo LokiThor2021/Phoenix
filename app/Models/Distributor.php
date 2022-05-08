@@ -17,6 +17,26 @@ use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Distributor
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property int $position
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TorrentRequest[] $requests
+ * @property-read int|null $requests_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Torrent[] $torrents
+ * @property-read int|null $torrents_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Distributor newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Distributor newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Distributor query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Distributor whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Distributor whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Distributor wherePosition($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Distributor whereSlug($value)
+ * @mixin \Eloquent
+ */
 class Distributor extends Model
 {
     use HasFactory;

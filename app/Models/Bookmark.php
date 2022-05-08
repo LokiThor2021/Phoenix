@@ -17,6 +17,27 @@ use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Bookmark
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int $torrent_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Torrent|null $torrent
+ * @property-read \App\Models\User $user
+ * @method static \Database\Factories\BookmarkFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Bookmark newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Bookmark newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Bookmark query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Bookmark whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Bookmark whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Bookmark whereTorrentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Bookmark whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Bookmark whereUserId($value)
+ * @mixin \Eloquent
+ */
 class Bookmark extends Model
 {
     use HasFactory;

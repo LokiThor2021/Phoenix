@@ -60,6 +60,9 @@ class AutoRemoveFeaturedTorrent extends Command
             if (isset($torrent)) {
                 $torrent->free = 0;
                 $torrent->doubleup = 0;
+                /**
+                 * @phpstan-ignore-next-line
+                 */
                 $torrent->featured = 0;
                 $torrent->save();
 

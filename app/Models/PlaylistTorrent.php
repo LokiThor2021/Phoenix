@@ -17,6 +17,27 @@ use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\PlaylistTorrent
+ *
+ * @property int $id
+ * @property int|null $position
+ * @property int $playlist_id
+ * @property int $torrent_id
+ * @property int $tmdb_id
+ * @property-read \App\Models\Playlist|null $playlist
+ * @property-read \App\Models\Torrent $torrent
+ * @method static \Database\Factories\PlaylistTorrentFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|PlaylistTorrent newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PlaylistTorrent newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PlaylistTorrent query()
+ * @method static \Illuminate\Database\Eloquent\Builder|PlaylistTorrent whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PlaylistTorrent wherePlaylistId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PlaylistTorrent wherePosition($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PlaylistTorrent whereTmdbId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PlaylistTorrent whereTorrentId($value)
+ * @mixin \Eloquent
+ */
 class PlaylistTorrent extends Model
 {
     use HasFactory;

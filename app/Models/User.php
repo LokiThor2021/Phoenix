@@ -27,6 +27,225 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use voku\helper\AntiXSS;
 
+/**
+ * App\Models\User
+ *
+ * @property int $id
+ * @property string $username
+ * @property string $email
+ * @property string $password
+ * @property string $passkey
+ * @property int $group_id
+ * @property int|null $internal_id
+ * @property int $active
+ * @property int $uploaded
+ * @property int $downloaded
+ * @property string|null $image
+ * @property string|null $title
+ * @property string|null $about
+ * @property string|null $signature
+ * @property int $fl_tokens
+ * @property float $seedbonus
+ * @property int $invites
+ * @property int $hitandruns
+ * @property string $rsskey
+ * @property int $chatroom_id
+ * @property int $censor
+ * @property int $chat_hidden
+ * @property int $hidden
+ * @property int $style
+ * @property int $nav
+ * @property int $torrent_layout
+ * @property int $torrent_filters
+ * @property string|null $custom_css
+ * @property string|null $standalone_css
+ * @property int $ratings
+ * @property int $read_rules
+ * @property int $can_chat
+ * @property int $can_comment
+ * @property int $can_download
+ * @property int $can_request
+ * @property int $can_invite
+ * @property int $can_upload
+ * @property int $show_poster
+ * @property int $peer_hidden
+ * @property int $private_profile
+ * @property int $block_notifications
+ * @property int $stat_hidden
+ * @property int $twostep
+ * @property string|null $remember_token
+ * @property string|null $api_token
+ * @property \Illuminate\Support\Carbon|null $last_login
+ * @property \Illuminate\Support\Carbon|null $last_action
+ * @property string|null $disabled_at
+ * @property int|null $deleted_by
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string $locale
+ * @property int $chat_status_id
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property int $own_flushes
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TorrentRequest[] $ApprovedRequests
+ * @property-read int|null $approved_requests_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TorrentRequest[] $FilledRequests
+ * @property-read int|null $filled_requests_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Assada\Achievements\Model\AchievementProgress[] $achievements
+ * @property-read int|null $achievements_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Article[] $articles
+ * @property-read int|null $articles_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserAudible[] $audibles
+ * @property-read int|null $audibles_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BonTransactions[] $bonGiven
+ * @property-read int|null $bon_given_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BonTransactions[] $bonReceived
+ * @property-read int|null $bon_received_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Torrent[] $bookmarks
+ * @property-read int|null $bookmarks_count
+ * @property-read \App\Models\ChatStatus|null $chatStatus
+ * @property-read \App\Models\Chatroom|null $chatroom
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserEcho[] $echoes
+ * @property-read int|null $echoes_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\FeaturedTorrent[] $featuredTorrent
+ * @property-read int|null $featured_torrent_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Follow[] $follows
+ * @property-read int|null $follows_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\FreeleechToken[] $freeleechTokens
+ * @property-read int|null $freeleech_tokens_count
+ * @property-read string $slug
+ * @property-read \App\Models\Group|null $group
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\History[] $history
+ * @property-read int|null $history_count
+ * @property-read \App\Models\Internal|null $internal
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Like[] $likes
+ * @property-read int|null $likes_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Message[] $messages
+ * @property-read int|null $messages_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Torrent[] $moderated
+ * @property-read int|null $moderated_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Note[] $notes
+ * @property-read int|null $notes_count
+ * @property-read \App\Models\UserNotification|null $notification
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Peer[] $peers
+ * @property-read int|null $peers_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Playlist[] $playlists
+ * @property-read int|null $playlists_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\PrivateMessage[] $pm_receiver
+ * @property-read int|null $pm_receiver_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\PrivateMessage[] $pm_sender
+ * @property-read int|null $pm_sender_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Poll[] $polls
+ * @property-read int|null $polls_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Post[] $posts
+ * @property-read int|null $posts_count
+ * @property-read \App\Models\UserPrivacy|null $privacy
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Invite[] $receivedInvite
+ * @property-read int|null $received_invite_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Report[] $reports
+ * @property-read int|null $reports_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TorrentRequestBounty[] $requestBounty
+ * @property-read int|null $request_bounty_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TorrentRequest[] $requests
+ * @property-read int|null $requests_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Rss[] $rss
+ * @property-read int|null $rss_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Invite[] $sentInvite
+ * @property-read int|null $sent_invite_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Report[] $solvedReports
+ * @property-read int|null $solved_reports_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Ban[] $staffban
+ * @property-read int|null $staffban_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Warning[] $staffdeletedwarning
+ * @property-read int|null $staffdeletedwarning_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Warning[] $staffwarning
+ * @property-read int|null $staffwarning_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Subscription[] $subscriptions
+ * @property-read int|null $subscriptions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Thank[] $thanksGiven
+ * @property-read int|null $thanks_given_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Thank[] $thanksReceived
+ * @property-read int|null $thanks_received_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Ticket[] $tickets
+ * @property-read int|null $tickets_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Topic[] $topics
+ * @property-read int|null $topics_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Torrent[] $torrents
+ * @property-read int|null $torrents_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Ban[] $userban
+ * @property-read int|null $userban_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Warning[] $userwarning
+ * @property-read int|null $userwarning_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Warning[] $warnings
+ * @property-read int|null $warnings_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Wish[] $wishes
+ * @property-read int|null $wishes_count
+ * @method static \Database\Factories\UserFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
+ * @method static \Illuminate\Database\Query\Builder|User onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|User query()
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAbout($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereApiToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereBlockNotifications($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCanChat($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCanComment($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCanDownload($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCanInvite($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCanRequest($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCanUpload($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCensor($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereChatHidden($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereChatStatusId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereChatroomId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCustomCss($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereDisabledAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereDownloaded($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereFlTokens($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereGroupId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereHidden($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereHitandruns($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereInternalId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereInvites($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereLastAction($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereLastLogin($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereLocale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereNav($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereOwnFlushes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePasskey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePeerHidden($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePrivateProfile($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereRatings($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereReadRules($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereRsskey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereSeedbonus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereShowPoster($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereSignature($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereStandaloneCss($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereStatHidden($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereStyle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereTorrentFilters($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereTorrentLayout($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereTwostep($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereUploaded($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereUsername($value)
+ * @method static \Illuminate\Database\Query\Builder|User withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|User withoutTrashed()
+ * @mixin \Eloquent
+ */
 class User extends Authenticatable
 {
     use HasFactory;

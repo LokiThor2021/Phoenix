@@ -53,34 +53,34 @@ class AutoRemoveTimedTorrentBuffs extends Command
         $appurl = \config('app.url');
 
         $flTorrents = Torrent::whereNotNull('fl_until')->where('fl_until', '<', Carbon::now()->toDateTimeString())->get();
-
-        foreach ($flTorrents as $torrent) {
-            if (isset($torrent)) {
-                $torrent->free = 0;
-                $torrent->fl_until = null;
-                $torrent->save();
-
-                // Announce To Chat
-                $this->chatRepository->systemMessage(
-                    \sprintf('Ladies and Gents, [url=%s/torrents/%s]%s[/url] timed freeleech buff has expired.', $appurl, $torrent->id, $torrent->name)
-                );
+        if ($flTorrents->isNotEmpty()) {
+            foreach ($flTorrents as $torrent) {
+                    $torrent->free = 0;
+                    $torrent->fl_until = null;
+                    $torrent->save();
+            
+                    // Announce To Chat
+                    $this->chatRepository->systemMessage(
+                        \sprintf('Ladies and Gents, [url=%s/torrents/%s]%s[/url] timed freeleech buff has expired.',
+                            $appurl, $torrent->id, $torrent->name)
+                    );
             }
         }
+        
 
         $duTorrents = Torrent::whereNotNull('du_until')->where('du_until', '<', Carbon::now()->toDateTimeString())->get();
-
+    if ($duTorrents->isNotEmpty()) {
         foreach ($duTorrents as $torrent) {
-            if (isset($torrent)) {
                 $torrent->doubleup = 0;
                 $torrent->du_until = null;
                 $torrent->save();
-
+            
                 // Announce To Chat
                 $this->chatRepository->systemMessage(
                     \sprintf('Ladies and Gents, [url=%s/torrents/%s]%s[/url] timed double upload buff has expired.', $appurl, $torrent->id, $torrent->name)
                 );
-            }
         }
+    }
 
         $this->comment('Automated Removal Of Expired Torrent Buffs Command Complete');
     }

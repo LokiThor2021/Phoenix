@@ -47,7 +47,7 @@ class AutoHighspeedTag extends Command
 
         $seedboxUsers = Seedbox::pluck('user_id');
 
-        if ($seedboxUsers) {
+        if ($seedboxUsers->isNotEmpty()) {
             $torid = Peer::whereIntegerInRaw('user_id', $seedboxUsers)->where('seeder', '=', 1)->pluck('torrent_id');
 
             foreach ($torid as $id) {

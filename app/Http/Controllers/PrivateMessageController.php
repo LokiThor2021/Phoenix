@@ -106,19 +106,17 @@ class PrivateMessageController extends Controller
      */
     public function sendPrivateMessage(Request $request): \Illuminate\Http\RedirectResponse
     {
-        $v = null;
         $user = $request->user();
 
         $dest = 'default';
-        if ($request->has('dest') && $request->input('dest') == 'profile') {
+        if ($request->has('dest') && $request->input('dest') === 'profile') {
             $dest = 'profile';
         }
 
         if ($request->has('receiver_id')) {
             $recipient = User::where('username', '=', $request->input('receiver_id'))->firstOrFail();
         } else {
-            return \to_route('create', ['username' => $request->user()->username, 'id' => $request->user()->id])
-                ->withErrors($v->errors());
+            return \to_route('create', ['username' => $request->user()->username, 'id' => $request->user()->id]);
         }
 
         $privateMessage = new PrivateMessage();

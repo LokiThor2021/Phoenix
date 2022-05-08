@@ -17,6 +17,31 @@ use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\TorrentRequestBounty
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property float $seedbonus
+ * @property int $requests_id
+ * @property int $anon
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\TorrentRequest|null $request
+ * @property-read \App\Models\User $user
+ * @method static \Database\Factories\TorrentRequestBountyFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequestBounty newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequestBounty newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequestBounty query()
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequestBounty whereAnon($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequestBounty whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequestBounty whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequestBounty whereRequestsId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequestBounty whereSeedbonus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequestBounty whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentRequestBounty whereUserId($value)
+ * @mixin \Eloquent
+ */
 class TorrentRequestBounty extends Model
 {
     use HasFactory;

@@ -18,6 +18,57 @@ use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Forum
+ *
+ * @property int $id
+ * @property int|null $position
+ * @property int|null $num_topic
+ * @property int|null $num_post
+ * @property int|null $last_topic_id
+ * @property string|null $last_topic_name
+ * @property string|null $last_topic_slug
+ * @property int|null $last_post_user_id
+ * @property string|null $last_post_user_username
+ * @property string|null $name
+ * @property string|null $slug
+ * @property string|null $description
+ * @property int|null $parent_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|Forum[] $forums
+ * @property-read int|null $forums_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Permission[] $permissions
+ * @property-read int|null $permissions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Topic[] $sub_topics
+ * @property-read int|null $sub_topics_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Topic[] $subscription_topics
+ * @property-read int|null $subscription_topics_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Subscription[] $subscriptions
+ * @property-read int|null $subscriptions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Topic[] $topics
+ * @property-read int|null $topics_count
+ * @method static \Database\Factories\ForumFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Forum newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Forum newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Forum query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Forum whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Forum whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Forum whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Forum whereLastPostUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Forum whereLastPostUserUsername($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Forum whereLastTopicId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Forum whereLastTopicName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Forum whereLastTopicSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Forum whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Forum whereNumPost($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Forum whereNumTopic($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Forum whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Forum wherePosition($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Forum whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Forum whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Forum extends Model
 {
     use HasFactory;

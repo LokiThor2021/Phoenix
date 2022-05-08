@@ -18,6 +18,41 @@ use Hootlex\Moderation\Moderatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Application
+ *
+ * @property int $id
+ * @property string $type
+ * @property string $email
+ * @property string|null $referrer
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $moderated_at
+ * @property int|null $moderated_by
+ * @property int|null $accepted_by
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ApplicationImageProof[] $imageProofs
+ * @property-read int|null $image_proofs_count
+ * @property-read \App\Models\User|null $moderated
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ApplicationUrlProof[] $urlProofs
+ * @property-read int|null $url_proofs_count
+ * @property-read \App\Models\User|null $user
+ * @method static \Database\Factories\ApplicationFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Application newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Application newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Application query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereAcceptedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereModeratedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereModeratedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereReferrer($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Application extends Model
 {
     use HasFactory;

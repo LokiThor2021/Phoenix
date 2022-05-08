@@ -29,8 +29,6 @@ class SystemBot
 {
     private $bot;
 
-    private $chat;
-
     private $target;
 
     private $type;

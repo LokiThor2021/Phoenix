@@ -15,6 +15,26 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Keyword
+ *
+ * @property int $id
+ * @property string $name
+ * @property int $torrent_id
+ * @property string|null $created_at
+ * @property string|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Torrent[] $torrents
+ * @property-read int|null $torrents_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Keyword newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Keyword newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Keyword query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Keyword whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Keyword whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Keyword whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Keyword whereTorrentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Keyword whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Keyword extends Model
 {
     /**

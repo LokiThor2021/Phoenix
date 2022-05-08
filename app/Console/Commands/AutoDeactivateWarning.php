@@ -47,7 +47,7 @@ class AutoDeactivateWarning extends Command
 
         foreach ($warnings as $warning) {
             // Set Records Active To 0 in warnings table
-            $warning->active = '0';
+            $warning->active = 0;
             $warning->save();
 
             // Send Private Message

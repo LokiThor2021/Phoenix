@@ -28,8 +28,6 @@ class CasinoBot
 {
     private $bot;
 
-    private $chat;
-
     private ?\App\Models\User $target = null;
 
     private $type;

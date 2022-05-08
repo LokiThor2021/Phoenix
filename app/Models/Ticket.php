@@ -6,6 +6,52 @@ use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Ticket
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int $category_id
+ * @property int $priority_id
+ * @property int|null $staff_id
+ * @property int|null $user_read
+ * @property int|null $staff_read
+ * @property string $subject
+ * @property string $body
+ * @property \Illuminate\Support\Carbon|null $closed_at
+ * @property \Illuminate\Support\Carbon|null $reminded_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TicketAttachment[] $attachments
+ * @property-read int|null $attachments_count
+ * @property-read \App\Models\TicketCategory|null $category
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read \App\Models\TicketPriority|null $priority
+ * @property-read \App\Models\User|null $staff
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|Ticket newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Ticket newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Ticket query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Ticket stale()
+ * @method static \Illuminate\Database\Eloquent\Builder|Ticket status($status)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ticket whereBody($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ticket whereCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ticket whereClosedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ticket whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ticket whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ticket whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ticket wherePriorityId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ticket whereRemindedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ticket whereStaffId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ticket whereStaffRead($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ticket whereSubject($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ticket whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ticket whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ticket whereUserRead($value)
+ * @mixin \Eloquent
+ */
 class Ticket extends Model
 {
     use HasFactory;

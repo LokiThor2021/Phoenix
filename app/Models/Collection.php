@@ -15,6 +15,36 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Collection
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $name_sort
+ * @property string|null $parts
+ * @property string|null $overview
+ * @property string|null $poster
+ * @property string|null $backdrop
+ * @property string|null $created_at
+ * @property string|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Movie[] $movie
+ * @property-read int|null $movie_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Collection newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Collection newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Collection query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Collection whereBackdrop($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Collection whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Collection whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Collection whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Collection whereNameSort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Collection whereOverview($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Collection whereParts($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Collection wherePoster($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Collection whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Collection extends Model
 {
     protected $guarded = [];

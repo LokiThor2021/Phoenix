@@ -17,6 +17,24 @@ use App\Helpers\StringHelper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\TorrentFile
+ *
+ * @property int $id
+ * @property string $name
+ * @property int $size
+ * @property int $torrent_id
+ * @property-read \App\Models\Torrent $torrent
+ * @method static \Database\Factories\TorrentFileFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentFile newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentFile newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentFile query()
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentFile whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentFile whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentFile whereSize($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TorrentFile whereTorrentId($value)
+ * @mixin \Eloquent
+ */
 class TorrentFile extends Model
 {
     use HasFactory;

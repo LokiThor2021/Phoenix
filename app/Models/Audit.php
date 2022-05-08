@@ -16,6 +16,32 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Audit
+ *
+ * @property int $id
+ * @property int|null $user_id
+ * @property string $model_name
+ * @property int $model_entry_id
+ * @property string $action
+ * @property string $record
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User|null $user
+ * @method static \Database\Factories\AuditFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Audit newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Audit newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Audit query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Audit whereAction($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Audit whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Audit whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Audit whereModelEntryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Audit whereModelName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Audit whereRecord($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Audit whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Audit whereUserId($value)
+ * @mixin \Eloquent
+ */
 class Audit extends Model
 {
     use HasFactory;

@@ -18,6 +18,35 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use voku\helper\AntiXSS;
 
+/**
+ * App\Models\Message
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int $chatroom_id
+ * @property int|null $receiver_id
+ * @property int|null $bot_id
+ * @property string $message
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Bot|null $bot
+ * @property-read \App\Models\Chatroom|null $chatroom
+ * @property-read \App\Models\User|null $receiver
+ * @property-read \App\Models\User $user
+ * @method static \Database\Factories\MessageFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Message newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Message query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereBotId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereChatroomId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereMessage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereReceiverId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereUserId($value)
+ * @mixin \Eloquent
+ */
 class Message extends Model
 {
     use HasFactory;

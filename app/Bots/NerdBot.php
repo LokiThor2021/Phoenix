@@ -32,8 +32,6 @@ class NerdBot
 {
     private $bot;
 
-    private $chat;
-
     private $target;
 
     private $type;

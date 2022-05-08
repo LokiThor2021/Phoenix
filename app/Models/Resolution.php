@@ -17,6 +17,27 @@ use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Resolution
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property int $position
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TorrentRequest[] $requests
+ * @property-read int|null $requests_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Torrent[] $torrents
+ * @property-read int|null $torrents_count
+ * @method static \Database\Factories\ResolutionFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Resolution newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Resolution newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Resolution query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Resolution whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Resolution whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Resolution wherePosition($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Resolution whereSlug($value)
+ * @mixin \Eloquent
+ */
 class Resolution extends Model
 {
     use HasFactory;

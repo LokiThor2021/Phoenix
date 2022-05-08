@@ -15,6 +15,52 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Person
+ *
+ * @property int $id
+ * @property string $name
+ * @property string|null $imdb_id
+ * @property string|null $known_for_department
+ * @property string|null $place_of_birth
+ * @property string|null $popularity
+ * @property string|null $profile
+ * @property string|null $still
+ * @property string|null $adult
+ * @property string|null $also_known_as
+ * @property string|null $biography
+ * @property string|null $birthday
+ * @property string|null $deathday
+ * @property string|null $gender
+ * @property string|null $homepage
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Episode[] $episode
+ * @property-read int|null $episode_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Movie[] $movie
+ * @property-read int|null $movie_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Season[] $season
+ * @property-read int|null $season_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Tv[] $tv
+ * @property-read int|null $tv_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Person newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Person newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Person query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Person whereAdult($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Person whereAlsoKnownAs($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Person whereBiography($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Person whereBirthday($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Person whereDeathday($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Person whereGender($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Person whereHomepage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Person whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Person whereImdbId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Person whereKnownForDepartment($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Person whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Person wherePlaceOfBirth($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Person wherePopularity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Person whereProfile($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Person whereStill($value)
+ * @mixin \Eloquent
+ */
 class Person extends Model
 {
     protected $guarded = [];

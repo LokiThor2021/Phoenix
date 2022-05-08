@@ -16,6 +16,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\GitUpdate
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $hash
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Database\Factories\GitUpdateFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|GitUpdate newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|GitUpdate newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|GitUpdate query()
+ * @method static \Illuminate\Database\Eloquent\Builder|GitUpdate whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|GitUpdate whereHash($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|GitUpdate whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|GitUpdate whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|GitUpdate whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class GitUpdate extends Model
 {
     use HasFactory;

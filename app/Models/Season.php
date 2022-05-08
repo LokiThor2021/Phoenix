@@ -15,6 +15,43 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Season
+ *
+ * @property int $id
+ * @property int $tv_id
+ * @property int $season_number
+ * @property string|null $name
+ * @property string|null $overview
+ * @property string|null $poster
+ * @property string|null $air_date
+ * @property string|null $created_at
+ * @property string|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Cast[] $cast
+ * @property-read int|null $cast_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Crew[] $crew
+ * @property-read int|null $crew_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Episode[] $episodes
+ * @property-read int|null $episodes_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Person[] $person
+ * @property-read int|null $person_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Torrent[] $torrents
+ * @property-read int|null $torrents_count
+ * @property-read \App\Models\Tv $tv
+ * @method static \Illuminate\Database\Eloquent\Builder|Season newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Season newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Season query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Season whereAirDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Season whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Season whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Season whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Season whereOverview($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Season wherePoster($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Season whereSeasonNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Season whereTvId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Season whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Season extends Model
 {
     protected $guarded = [];

@@ -17,6 +17,37 @@ use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\BotTransaction
+ *
+ * @property int $id
+ * @property string|null $type
+ * @property float $cost
+ * @property int $user_id
+ * @property int $bot_id
+ * @property int $to_user
+ * @property int $to_bot
+ * @property string $comment
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Bot $bot
+ * @property-read \App\Models\User $user
+ * @method static \Database\Factories\BotTransactionFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|BotTransaction newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BotTransaction newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BotTransaction query()
+ * @method static \Illuminate\Database\Eloquent\Builder|BotTransaction whereBotId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BotTransaction whereComment($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BotTransaction whereCost($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BotTransaction whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BotTransaction whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BotTransaction whereToBot($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BotTransaction whereToUser($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BotTransaction whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BotTransaction whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BotTransaction whereUserId($value)
+ * @mixin \Eloquent
+ */
 class BotTransaction extends Model
 {
     use HasFactory;

@@ -16,6 +16,33 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\UserEcho
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int|null $room_id
+ * @property int|null $target_id
+ * @property int|null $bot_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Bot|null $bot
+ * @property-read \App\Models\Chatroom|null $room
+ * @property-read \App\Models\User|null $target
+ * @property-read \App\Models\User $user
+ * @method static \Database\Factories\UserEchoFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserEcho newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserEcho newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserEcho query()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserEcho whereBotId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserEcho whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserEcho whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserEcho whereRoomId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserEcho whereTargetId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserEcho whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserEcho whereUserId($value)
+ * @mixin \Eloquent
+ */
 class UserEcho extends Model
 {
     use HasFactory;

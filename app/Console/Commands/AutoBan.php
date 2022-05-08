@@ -67,6 +67,9 @@ class AutoBan extends Command
                 $logban = new Ban();
                 $logban->owned_by = $ban->warneduser->id;
                 $logban->created_by = 1;
+                /**
+                 * @phpstan-ignore-next-line
+                 */
                 $logban->ban_reason = 'Warning Limit Reached, has '.$ban->value.' warnings.';
                 $logban->unban_reason = '';
                 $logban->save();

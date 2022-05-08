@@ -51,6 +51,9 @@ class AutoRevokePermissions extends Command
         $disabledGroup = \cache()->rememberForever('disabled_group', fn () => Group::where('slug', '=', 'disabled')->pluck('id'));
         $prunedGroup = \cache()->rememberForever('pruned_group', fn () => Group::where('slug', '=', 'pruned')->pluck('id'));
 
+        /**
+         * @phpstan-ignore-next-line
+         */
         User::whereIntegerNotInRaw('group_id', [$bannedGroup[0], $validatingGroup[0], $leechGroup[0], $disabledGroup[0], $prunedGroup[0]])->update(['can_download' => '1', 'can_request' => '1']);
         User::whereIntegerInRaw('group_id', [$bannedGroup[0], $validatingGroup[0], $leechGroup[0], $disabledGroup[0], $prunedGroup[0]])->update(['can_download' => '0', 'can_request' => '0']);
 
