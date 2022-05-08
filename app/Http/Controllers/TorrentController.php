@@ -21,6 +21,7 @@ use App\Helpers\TorrentHelper;
 use App\Helpers\TorrentTools;
 use App\Models\BonTransactions;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Distributor;
 use App\Models\FeaturedTorrent;
 use App\Models\FreeleechToken;
@@ -188,13 +189,13 @@ class TorrentController extends Controller
                 'involved_companies.company',
                 'involved_companies.company.logo',
                 'platforms', ])
-                ->find($torrent->igdb);
+                ->find((int)$torrent->igdb);
             $link = collect($meta->videos)->take(1)->pluck('video_id');
             $trailer = isset($link[0]) ? 'https://www.youtube.com/embed/'.$link[0] : '/img/no-video.png';
             $platforms = PlatformLogo::whereIn('id', collect($meta->platforms)->pluck('platform_logo')->toArray())->get();
         }
 
-        $featured = $torrent->featured == 1 ? FeaturedTorrent::where('torrent_id', '=', $id)->first() : null;
+        $featured = $torrent->featured === 1 ? FeaturedTorrent::where('torrent_id', '=', $id)->first() : null;
 
         $mediaInfo = null;
         if ($torrent->mediainfo !== null) {
